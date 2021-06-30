@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -33,6 +35,14 @@ class UserController extends Controller
         $user->lastname = $lastname;
         $user->nick = $nick;
         $user->email = $email;
+
+        $image_path = $request->file('image');
+        if($image_path){
+            $image_path_full = time().$image_path->getClientOriginalName();
+
+            Storage::disk('users')->put($image_path_full, File::get($image_path));
+            $user->image = $image_path_full;
+        }
 
         $user->save();
        

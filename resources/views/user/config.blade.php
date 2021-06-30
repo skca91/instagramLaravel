@@ -20,7 +20,7 @@
                  <!-- Validation Errors -->
                 <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                    <form method="POST" action="{{ route('user.update') }}">
+                    <form method="POST" action="{{ route('user.update') }}" enctype="multipart/form-data">
                         @csrf
 
                         <!-- Name -->
@@ -49,6 +49,13 @@
                             <x-label for="email" :value="__('Email')" />
 
                             <x-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{ Auth::user()->email }}" required />
+                        </div>
+
+                         <!-- Profile Photo -->
+                         <div class="mt-4">
+                            <x-label for="image" :value="__('Avatar')" />
+
+                            <x-input id="image" class="block mt-1 w-full" type="file" name="image" required />
                         </div>
 
                         <div class="flex items-center justify-end mt-4">
