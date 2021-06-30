@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -48,6 +49,13 @@ class UserController extends Controller
        
         return redirect()->route('config')
                          ->with(['message' => 'User updated']);
+
+    }
+
+    public function getImage($filename){
+
+        $file = Storage::disk('users')->get($filename);
+        return new Response($file, 200);
 
     }
 }

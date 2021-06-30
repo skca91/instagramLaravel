@@ -53,8 +53,14 @@
 
                          <!-- Profile Photo -->
                          <div class="mt-4">
-                            <x-label for="image" :value="__('Avatar')" />
+                         @if(Auth::user()->image)
+                            <img src="{{ route('user.avatar', ['filename' => Auth::user()->image]) }}" class="avatar" />
+                         @endif
 
+                         </div>
+
+                         <div class="mt-4">
+                         <x-label for="image" :value="__('Avatar')" />
                             <x-input id="image" class="block mt-1 w-full" type="file" name="image" required />
                         </div>
 
