@@ -27,7 +27,7 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('config')" :active="request()->routeIs('')">
+                    <x-nav-link :href="route('config')" :active="request()->routeIs('config')">
                         {{ __('Settings') }}
                     </x-nav-link>
                 </div>
@@ -79,6 +79,21 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('')">
+                {{ __('Upload Image') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('')">
+                {{ __('Profile') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('config')" :active="request()->routeIs('config')">
+                {{ __('Settings') }}
             </x-responsive-nav-link>
         </div>
 
