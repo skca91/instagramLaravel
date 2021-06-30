@@ -25,3 +25,4 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/config', [UserController::class, 'config'])->name('config');
+Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
