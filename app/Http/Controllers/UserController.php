@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     public function config(){
         return view('user.config');
     }
