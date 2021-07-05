@@ -10,16 +10,10 @@
         <div class="max-w-7xl mx-auto sm:px-4 lg:px-6">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                <form method="POST" action="{{ route('user.update') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('image.save') }}" enctype="multipart/form-data">
                         @csrf
 
                          <!-- Image -->
-                         <div class="mt-4">
-                         @if(Auth::user()->image)
-                            <img src="{{ route('user.avatar', ['filename' => Auth::user()->image]) }}" class="avatar" />
-                         @endif
-
-                         </div>
 
                          <div class="mt-4">
                          <x-label for="image_path" :value="__('Image')" />
