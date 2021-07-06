@@ -13,10 +13,14 @@
                         {{ session('message') }}
                     </div>
             @endif
+            @foreach($images as $image)
                 <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
+                    {{ $image->user->name .' '. $image->user->lastname }}
+                    <img src="{{ route('image.file', ['filename' => $image->image_path]) }}" />
                 </div>
+            @endforeach
             </div>
+            {{ $images->links() }}
         </div>
     </div>
 </x-app-layout>
