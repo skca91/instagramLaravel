@@ -14,10 +14,57 @@
                     </div>
             @endif
             @foreach($images as $image)
-                <div class="p-6 bg-white border-b border-gray-200">
-                    {{ $image->user->name .' '. $image->user->lastname }}
-                    <img src="{{ route('image.file', ['filename' => $image->image_path]) }}" />
-                </div>
+            @if($image->user->image)
+		<div class="container-avatar">
+			<img src="{{ route('user.avatar',['filename'=>$image->user->image]) }}" class="avatar" />
+		</div>
+		@endif
+
+		<div class="data-user">
+                
+                    {{$image->user->name.' '.$image->user->surname}}
+                    <span class="nickname">
+                        {{' | @'.$image->user->nick}}
+                    </span>
+                
+            </div>
+        </div>
+
+        <div class="card-body">
+            <div class="image-container">
+                <img src="{{ route('image.file',['filename' => $image->image_path]) }}" />
+            </div>
+
+            <div class="description">
+                <span class="nickname">{{'@'.$image->user->nick}} </span>
+                
+                <p>{{$image->description}}</p>
+            </div>
+
+            <div class="likes">
+
+                <!-- Comprobar si el usuario le dio like a la imagen -->
+                <?php $user_like = false; ?>
+                @foreach($image->likes as $like)
+                @if($like->user->id == Auth::user()->id)
+                <?php $user_like = true; ?>
+                @endif
+                @endforeach
+
+                @if($user_like)
+                <img src="{{asset('img/heartred.png')}}" data-id="{{$image->id}}" class="btn-dislike"/>
+                @else
+                <img src="{{asset('img/heartgris.png')}}" data-id="{{$image->id}}" class="btn-like"/>
+                @endif
+
+                <span class="number_likes">{{count($image->likes)}}</span>
+            </div>
+
+            <div class="comments">
+            
+                    Comentarios ({{count($image->comments)}})
+            
+            </div>
             @endforeach
             </div>
             {{ $images->links() }}
