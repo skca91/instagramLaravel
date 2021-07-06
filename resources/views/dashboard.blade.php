@@ -7,17 +7,20 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        
+				<div class="card-header">
             @if(session('message'))
                     <div class='alert alert-success'>
                         {{ session('message') }}
                     </div>
             @endif
+
             @foreach($images as $image)
+
             @if($image->user->image)
-		<div class="container-avatar">
-			<img src="{{ route('user.avatar',['filename'=>$image->user->image]) }}" class="avatar" />
-		</div>
+            <div class="container-avatar">
+                <img src="{{ route('user.avatar',['filename'=>Auth::user()->image]) }}" class="avatar" />
+            </div>
 		@endif
 
 		<div class="data-user">
@@ -61,9 +64,9 @@
             </div>
 
             <div class="comments">
-            
-                    Comentarios ({{count($image->comments)}})
-            
+            <a href="{{ route('image.detail', ['id' => $image->id])}}" class="btn btn-sm btn-warning btn-comments">
+				Comentarios ({{count($image->comments)}})
+			</a>
             </div>
             @endforeach
             </div>

@@ -27,3 +27,5 @@ Route::get('/upload-image', [ImageController::class, 'create'])->name('image.cre
 Route::post('/image/save', [ImageController::class, 'save'])->name('image.save');
 Route::get('/image/file/{filename}', [ImageController::class, 'getImage'])->name('image.file');
 
+Route::get('/image/{id}', [ImageController::class, 'detail'])->name('image.detail');
+

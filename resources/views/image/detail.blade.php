@@ -31,7 +31,7 @@
 
 					<div class="description">
 						<span class="nickname">{{'@'.$image->user->nick}} </span>
-						<span class="nickname date">{{' | '.\FormatTime::LongTimeFilter($image->created_at)}}</span>
+						
 						<p>{{$image->description}}</p>
 					</div>
 
@@ -46,9 +46,9 @@
 						@endforeach
 
 						@if($user_like)
-						<img src="{{asset('img/heart-red.png')}}" data-id="{{$image->id}}" class="btn-dislike"/>
+						<img src="{{asset('img/heartred.png')}}" data-id="{{$image->id}}" class="btn-dislike"/>
 						@else
-						<img src="{{asset('img/heart-black.png')}}" data-id="{{$image->id}}" class="btn-like"/>
+						<img src="{{asset('img/heartgris.png')}}" data-id="{{$image->id}}" class="btn-like"/>
 						@endif
 
 						<span class="number_likes">{{count($image->likes)}}</span>
@@ -56,9 +56,7 @@
 
 					@if(Auth::user() && Auth::user()->id == $image->user->id)
 					<div class="actions">
-						<a href="{{ route('image.edit', ['id' => $image->id]) }}" class="btn btn-sm btn-primary">Actualizar</a>
-						<!--<a href="{{ route('image.delete', ['id' => $image->id]) }}" class="btn btn-sm btn-danger">Borrar</a>-->
-
+						
 						<!-- Button to Open the Modal -->
 						<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
 							Eliminar
@@ -81,10 +79,7 @@
 									</div>
 
 									<!-- Modal footer -->
-									<div class="modal-footer">
-										<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
-										<a href="{{ route('image.delete', ['id' => $image->id]) }}" class="btn btn-danger">Borrar definitivamente</a>
-									</div>
+								
 
 								</div>
 							</div>
@@ -98,7 +93,7 @@
 						<h2>Comentarios ({{count($image->comments)}})</h2>
 						<hr>
 
-						<form method="POST" action="{{ route('comment.save') }}">
+						<form method="POST" action="">
 							@csrf
 
 							<input type="hidden" name="image_id" value="{{$image->id}}" />
