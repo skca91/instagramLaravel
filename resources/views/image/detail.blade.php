@@ -93,7 +93,7 @@
 						<h2>Comentarios ({{count($image->comments)}})</h2>
 						<hr>
 
-						<form method="POST" action="">
+						<form method="POST" action="{{ route('comment.save') }}">
 							@csrf
 
 							<input type="hidden" name="image_id" value="{{$image->id}}" />
