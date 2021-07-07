@@ -31,4 +31,5 @@ Route::get('/image/file/{filename}', [ImageController::class, 'getImage'])->name
 Route::get('/image/{id}', [ImageController::class, 'detail'])->name('image.detail');
 
 Route::post('/comment/save', [CommentController::class, 'save'])->name('comment.save');
+Route::delete('/comment/{id}', [CommentController::class, 'delete'])->name('comment.delete');
 

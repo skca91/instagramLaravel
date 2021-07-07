@@ -34,4 +34,14 @@ class CommentController extends Controller
         return redirect()->route('image.detail', ['id' => $image_id])
                          ->with(['message' => 'Comment save successfully']);
     }
+
+    public function delete($id){
+
+        $user = Auth::user();
+        $comment = Comment::find($id);
+
+        $comment->delete();
+
+
+    }
 }
