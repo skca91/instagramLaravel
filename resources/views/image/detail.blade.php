@@ -5,6 +5,11 @@
         </h2>
     </x-slot>
 
+	@if(session('message'))
+                    <div class='alert alert-success'>
+                        {{ session('message') }}
+                    </div>
+            @endif
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="card pub_image pub_image_detail">
@@ -116,7 +121,7 @@
 						<div class="comment">
 
 							<span class="nickname">{{'@'.$comment->user->nick}} </span>
-							<span class="nickname date">{{' | '.\FormatTime::LongTimeFilter($comment->created_at)}}</span>
+							
 							<p>{{$comment->content}}<br/>
 
 								@if(Auth::check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id == Auth::user()->id))
