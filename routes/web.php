@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,6 @@ Route::get('/image/{id}', [ImageController::class, 'detail'])->name('image.detai
 
 Route::post('/comment/save', [CommentController::class, 'save'])->name('comment.save');
 Route::delete('/comment/{id}', [CommentController::class, 'delete'])->name('comment.delete');
+
+Route::get('/like/{image_id}', [LikeController::class, 'like'])->name('like.save');
 
