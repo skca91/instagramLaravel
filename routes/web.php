@@ -31,6 +31,7 @@ Route::get('/upload-image', [ImageController::class, 'create'])->name('image.cre
 Route::post('/image/save', [ImageController::class, 'save'])->name('image.save');
 Route::get('/image/file/{filename}', [ImageController::class, 'getImage'])->name('image.file');
 Route::get('/image/{id}', [ImageController::class, 'detail'])->name('image.detail');
+Route::get('/image/delete/{id}', [ImageController::class, 'delete'])->name('image.delete');
 
 Route::post('/comment/save', [CommentController::class, 'save'])->name('comment.save');
 Route::delete('/comment/{id}', [CommentController::class, 'delete'])->name('comment.delete');

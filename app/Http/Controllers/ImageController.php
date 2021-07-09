@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Image;
+use App\Models\Like;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -62,5 +64,39 @@ class ImageController extends Controller
         return view('image.detail', [
             'image' => $image
         ]);
+    }
+
+    public function delete($id){
+
+        $user = Auth::user();
+
+        $image = Image::find($id);
+        $comments = Comment::where('image_id', $id)->get();
+        $likes = Like::where('image_id', $id)->get();
+
+        if($user && $image && $image->user->id == $user->id){
+
+            if($comments && count($comments) > 0){
+                foreach($comments as $comment){
+                    $comment->delete();
+                }
+            }
+
+            if($likes && count($likes) > 0){
+                foreach($likes as $like){
+                    $like->delete();
+                }
+            }
+
+            Storage::disk('images')->delete($image->image_path);
+            $image->delete();
+
+            $message = array('message' => 'the photo has been deleted');
+
+        }else{
+            $message = array('message' => 'the photo has not been deleted');
+        }
+
+        return redirect()->route('dashboard')->with($message);
     }
 }

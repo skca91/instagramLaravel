@@ -64,33 +64,10 @@
 					@if(Auth::user() && Auth::user()->id == $image->user->id)
 					<div class="actions">
 						
-						<!-- Button to Open the Modal -->
-						<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
+						
+						<a href="{{ route('image.delete', ['id' => $image->id]) }}">
 							Delete
-						</button>
-
-						<!-- The Modal -->
-						<div class="modal" id="myModal">
-							<div class="modal-dialog">
-								<div class="modal-content">
-
-									<!-- Modal Header -->
-									<div class="modal-header">
-										<h4 class="modal-title">Are you sure?</h4>
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-									</div>
-
-									<!-- Modal body -->
-									<div class="modal-body">
-										Are you sure, Do you want delete this image?
-									</div>
-
-									<!-- Modal footer -->
-								
-
-								</div>
-							</div>
-						</div>
+						</a>
 					</div>
 					@endif
 
