@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Detail') }}
         </h2>
     </x-slot>
 
@@ -22,10 +22,12 @@
 					@endif
 
 					<div class="data-user">
+					<a href="{{ route('user.profile', ['id' => Auth::user()->id]) }}">
 						{{$image->user->name.' '.$image->user->surname}}
-						<span class="nickname">
-							{{' | @'.$image->user->nick}}
-						</span>
+								<span class="nickname">
+									{{' | @'.$image->user->nick}}
+								</span>
+           			 </a> 
 					</div>
 				</div>
 

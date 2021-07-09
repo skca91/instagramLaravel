@@ -63,4 +63,14 @@ class UserController extends Controller
         return new Response($file, 200);
 
     }
+
+    public function profile($id){
+
+        $user = User::find($id);
+
+        return view('user.profile', [
+            'user' => $user
+        ]);
+
+    }
 }

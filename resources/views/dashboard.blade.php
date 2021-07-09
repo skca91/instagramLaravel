@@ -17,20 +17,23 @@
 
             @foreach($images as $image)
 
-            @if($image->user->image)
-            <div class="container-avatar">
-                <img src="{{ route('user.avatar',['filename'=>Auth::user()->image]) }}" class="avatar" />
-            </div>
-		@endif
+            <div class="card-header">
 
-		<div class="data-user">
-                
-                    {{$image->user->name.' '.$image->user->surname}}
-                    <span class="nickname">
-                        {{' | @'.$image->user->nick}}
-                    </span>
-                
-            </div>
+					@if($image->user->image)
+					<div class="container-avatar">
+						<img src="{{ route('user.avatar',['filename'=>$image->user->image]) }}" class="avatar" />
+					</div>
+					@endif
+
+					<div class="data-user">
+					<a href="{{ route('user.profile', ['id' => Auth::user()->id]) }}">
+						{{$image->user->name.' '.$image->user->surname}}
+								<span class="nickname">
+									{{' | @'.$image->user->nick}}
+								</span>
+           			 </a> 
+					</div>
+				</div>
         </div>
 
         <div class="card-body">
