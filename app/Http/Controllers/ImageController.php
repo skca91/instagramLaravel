@@ -116,8 +116,32 @@ class ImageController extends Controller
 
     }
 
-    public function update(){
+    public function update(Request $request){
 
+        $validate = $this->validate($request, [
+            'image_path' => 'image',
+            'description' => 'required',
+        ]);
+
+        $id = $request->input('image_id');
+        $image_path = $request->file('image_path');
+        $description = $request->input('description');
+
+        $image = Image::find($id);
+        $image->description = $description;
+
+        if($image_path){
+
+            $image_path_name = time().$image_path->getClientOriginalName();
+
+            Storage::disk('images')->put($image_path_name, File::get($image_path));
+            $image->image_path = $image_path_name;
+        }
+
+        $image->save();
+
+        return redirect()->route('image.detail', ['id' => $id])
+                         ->with(['message' => 'Your image has been updated']);
 
     }
 }
