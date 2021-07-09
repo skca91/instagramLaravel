@@ -5,10 +5,9 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        
-				<div class="card-header">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="card pub_image pub_image_detail">
+				<div class="card-header">	
             @if(session('message'))
                     <div class='alert alert-success'>
                         {{ session('message') }}
