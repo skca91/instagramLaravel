@@ -66,7 +66,7 @@
 						
 						<!-- Button to Open the Modal -->
 						<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModal">
-							Eliminar
+							Delete
 						</button>
 
 						<!-- The Modal -->
@@ -76,13 +76,13 @@
 
 									<!-- Modal Header -->
 									<div class="modal-header">
-										<h4 class="modal-title">¿Estas seguro?</h4>
+										<h4 class="modal-title">Are you sure?</h4>
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
 									</div>
 
 									<!-- Modal body -->
 									<div class="modal-body">
-										Si eliminar esta imagen nunca podrás recuperarla, ¿estas seguro de querer borrarla?
+										Are you sure, Do you want delete this image?
 									</div>
 
 									<!-- Modal footer -->
@@ -97,7 +97,7 @@
 					<div class="clearfix"></div>
 					<div class="comments">
 
-						<h2>Comentarios ({{count($image->comments)}})</h2>
+						<h2>Comments ({{count($image->comments)}})</h2>
 						<hr>
 
 						<form method="POST" action="{{ route('comment.save') }}">
@@ -113,7 +113,7 @@
 								@endif
 							</p>
 							<button type="submit" class="btn btn-success">
-								Enviar
+								Send
 							</button>
 						</form>
 
@@ -128,7 +128,7 @@
 
 								@if(Auth::check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id == Auth::user()->id))
 								<a href="{{ route('comment.delete', ['id' => $comment->id]) }}" class="btn btn-sm btn-danger">
-									Eliminar
+									Delete
 								</a>
 								@endif
 							</p>
