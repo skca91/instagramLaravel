@@ -64,7 +64,9 @@
 					@if(Auth::user() && Auth::user()->id == $image->user->id)
 					<div class="actions">
 						
-						
+					<a href="{{ route('image.edit', ['id' => $image->id]) }}">
+							Edit
+						</a>
 						<a href="{{ route('image.delete', ['id' => $image->id]) }}">
 							Delete
 						</a>
